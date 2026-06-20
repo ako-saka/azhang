@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "build:docs": "npm run build && node ./scripts/copy-dist-to-docs.mjs"
   },
   "devDependencies": {
     "@astrojs/react": "^4.0.0",
