@@ -12,13 +12,14 @@ import './GridMotion.css';
 const GridMotion = ({ items = [], gradientColor = 'black' }) => {
   const gridRef = useRef(null);
   const rowRefs = useRef([]);
-  const mouseXRef = useRef(0);
+  const mouseXRef = useRef(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
 
   const totalItems = 28;
   const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);
   const combinedItems = items.length > 0 ? items.slice(0, totalItems) : defaultItems;
 
   useEffect(() => {
+    rowRefs.current = [];
     mouseXRef.current = window.innerWidth / 2;
     gsap.ticker.lagSmoothing(0);
 
@@ -30,13 +31,11 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
       const maxMoveAmount = 300;
       const baseDuration = 0.8;
       const inertiaFactors = [0.6, 0.4, 0.3, 0.2];
-      const time = performance.now() / 1000;
 
       rowRefs.current.forEach((row, index) => {
         if (row) {
           const direction = index % 2 === 0 ? 1 : -1;
-          const baseOffset = Math.sin(time + index * 0.8) * 40;
-          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction + baseOffset;
+          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction;
 
           gsap.to(row, {
             x: moveAmount,
@@ -48,19 +47,31 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
       });
     };
 
-    const removeAnimationLoop = gsap.ticker.add(updateMotion);
+    gsap.ticker.add(updateMotion);
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      removeAnimationLoop();
+      gsap.ticker.remove(updateMotion);
     };
   }, []);
+
+  const handleClick = () => {
+    gsap.to(rowRefs.current, {
+      scale: 1.04,
+      duration: 0.18,
+      ease: 'power1.inOut',
+      yoyo: true,
+      repeat: 1,
+      overwrite: 'auto',
+    });
+  };
 
   return (
     <div className="noscroll loading" ref={gridRef}>
       <section
         className="intro"
+        onClick={handleClick}
         style={{ background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)` }}
       >
         <div className="gridMotion-container">

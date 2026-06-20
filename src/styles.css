@@ -61,16 +61,13 @@ nav {
 .hero {
   display: grid;
   place-items: center;
-  min-height: 60vh;
+  height: 64vh;
+  max-height: 640px;
+  min-height: 520px;
   text-align: center;
-  padding: 64px 24px;
-}
-
-.hero {
-  position: relative;
-  min-height: 100vh;
   padding: 0;
   overflow: hidden;
+  position: relative;
 }
 
 .hero-inner {
@@ -115,13 +112,26 @@ nav {
   padding: 24px;
 }
 
+#projects > .grid:nth-of-type(1) .card,
+#projects > .grid:nth-of-type(2) .card {
+  background: #e74c3c;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+#projects > .grid:nth-of-type(1) .card .card-title,
+#projects > .grid:nth-of-type(2) .card .card-title {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f223b;
+}
+
 .card-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
   padding: 8px 16px;
-  background: #e74c3c;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f223b;
   border-radius: 999px;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
@@ -132,11 +142,6 @@ nav {
   font-weight: 400;
   line-height: 1.6;
   opacity: 0.9;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.16);
 }
 
 .card:hover {
