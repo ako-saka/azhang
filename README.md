@@ -1,3 +1,21 @@
+# Aine Zhang — Astro Site
+
+This repository contains an Astro website. To publish to GitHub Pages we build the site and place the generated files in `docs/` so GitHub Pages can serve them.
+
+Entry file
+- When deployed from the `docs/` folder the entry is `docs/index.html` (generated after running the build).
+
+Local build & preview
+```bash
+npm install
+npm run build:docs
+npm run preview -- --host 0.0.0.0
+```
+
+Automatic deployment
+- A GitHub Actions workflow is included at `.github/workflows/deploy.yml`. On push to `main` it will build the site and publish the `docs/` folder to the `gh-pages` branch using the repository `GITHUB_TOKEN`.
+
+If you prefer publishing directly from the `docs/` folder on the `main` branch, enable GitHub Pages in the repository settings and select `main`/`docs` as the publishing source.
 # Aine Zhang Personal Website
 
 ## Introduction
