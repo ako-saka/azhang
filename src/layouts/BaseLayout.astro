@@ -1,10 +1,8 @@
 ---
 const nav = [
   { href: '/#projects', label: 'Projects' },
-  { href: '/about', label: 'About' },
   { href: '/interests', label: 'Interests' },
-  { href: '/resume', label: 'Resume' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact Me' },
 ];
 ---
 <!doctype html>
@@ -14,15 +12,72 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aine Zhang</title>
     <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .topbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 20px 32px;
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(14px);
+        z-index: 10;
+      }
+
+      .topbar-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+      }
+
+      .brand {
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        font-size: 1rem;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .tab {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(15, 34, 59, 0.08);
+        color: #0f223b;
+        text-decoration: none;
+        font-weight: 700;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .tab:hover {
+        background: rgba(15, 34, 59, 0.16);
+      }
+
+      .tab:focus-visible {
+        outline: 2px solid rgba(15, 34, 59, 0.35);
+        outline-offset: 3px;
+      }
+    </style>
   </head>
   <body>
     <header class="topbar">
-      <div class="brand">Aine Zhang</div>
-      <nav>
-        {nav.map((item) => (
-          <a href={item.href}>{item.label}</a>
-        ))}
-      </nav>
+      <div class="topbar-right">
+        <div class="brand">Aine Zhang</div>
+        <nav>
+          {nav.map((item) => (
+            <a class="tab" href={item.href}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
     </header>
     <main>
       <slot />

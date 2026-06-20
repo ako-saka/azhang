@@ -30,11 +30,13 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
       const maxMoveAmount = 300;
       const baseDuration = 0.8;
       const inertiaFactors = [0.6, 0.4, 0.3, 0.2];
+      const time = performance.now() / 1000;
 
       rowRefs.current.forEach((row, index) => {
         if (row) {
           const direction = index % 2 === 0 ? 1 : -1;
-          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction;
+          const baseOffset = Math.sin(time + index * 0.8) * 40;
+          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction + baseOffset;
 
           gsap.to(row, {
             x: moveAmount,

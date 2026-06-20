@@ -44,10 +44,8 @@ const gridItems = [
     <div class="grid">
       {projectCards.slice(0, 3).map((project) => (
         <a class="card" href={project.href}>
-          <div>
-            <span>{project.label}</span>
-            <p class="project-card-description">{project.description}</p>
-          </div>
+          <div class="card-title">{project.label}</div>
+          <p class="project-card-description">{project.description}</p>
         </a>
       ))}
     </div>
@@ -56,10 +54,8 @@ const gridItems = [
     <div class="grid">
       {projectCards.slice(3).map((project) => (
         <a class="card" href={project.href}>
-          <div>
-            <span>{project.label}</span>
-            <p class="project-card-description">{project.description}</p>
-          </div>
+          <div class="card-title">{project.label}</div>
+          <p class="project-card-description">{project.description}</p>
         </a>
       ))}
     </div>

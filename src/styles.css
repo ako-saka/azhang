@@ -27,11 +27,35 @@ body {
   letter-spacing: 0.12em;
 }
 
-nav a {
-  margin-left: 20px;
+nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tab {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(15, 34, 59, 0.08);
   color: #0f223b;
   text-decoration: none;
   font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tab:hover {
+  background: rgba(15, 34, 59, 0.14);
+}
+
+.tab:active,
+.tab:focus-visible {
+  outline: 2px solid rgba(15, 34, 59, 0.35);
+  outline-offset: 4px;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 0.12em;
 }
 
 .hero {
@@ -80,14 +104,39 @@ nav a {
 
 .card {
   display: grid;
-  place-items: center;
-  min-height: 200px;
+  gap: 18px;
+  min-height: 220px;
   border-radius: 22px;
-  background: #e74c3c;
+  background: #0f223b;
   color: white;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 24px;
+}
+
+.card-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 8px 16px;
+  background: #e74c3c;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.project-card-description {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.16);
 }
 
 .card:hover {
