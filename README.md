@@ -26,3 +26,15 @@ The site is designed to be simple, modern, and easy to extend with more pages an
 
 ## Notes
 This README will be updated each time the site receives a new change so progress remains tracked in one place.
+
+## Astro Migration
+- [x] Convert site to Astro
+- [x] Add shared layout and navigation
+- [x] Add homepage with projects grid and contact section
+- [x] Add interests and resume pages
+- [x] Add degdp and iching pages
+
+## Local Development
+- Install dependencies: `npm install`
+- Start dev server: `npm run dev`
+- Build for production: `npm run build`

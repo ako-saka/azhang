@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aine Zhang</title><link rel="stylesheet" href="/styles.css"></head> <body> <header class="topbar"> <div class="brand">Aine Zhang</div> <nav> <a href="#projects">Projects</a><a href="/interests">Interests</a><a href="/resume">Resume</a><a href="#contact">Contact</a> </nav> </header> <main>  <section class="section-block"> <h1>Interests</h1> <div class="interest-grid"> <div> <h2>Professional / Academic</h2> <p>Passionate about software development, machine learning, and digital design.</p> </div> <div> <h2>Hobbies</h2> <div class="text-box interactive-box"> <label for="interest-input">Explore hobbies</label> <input id="interest-input" type="text" placeholder="Type a hobby keyword..."> <ul id="search-history" class="search-history"> <li data-keyword="food">food</li> <li data-keyword="music">music</li> <li data-keyword="books">books</li> </ul> <div id="food-island" class="hidden island"> <p>food tastes good</p> </div> </div> </div> </div> </section> <script type="module">
+    const input = document.getElementById('interest-input');
+    const history = document.getElementById('search-history');
+    const foodIsland = document.getElementById('food-island');
+    const searchBox = document.querySelector('.interactive-box');
+
+    function showFoodIsland() {
+      foodIsland.classList.remove('hidden');
+    }
+
+    function hideFoodIsland() {
+      foodIsland.classList.add('hidden');
+    }
+
+    function isFoodKeyword(keyword) {
+      return keyword.trim().toLowerCase() === 'food';
+    }
+
+    function submitSearch(keyword) {
+      if (isFoodKeyword(keyword)) {
+        showFoodIsland();
+      } else {
+        hideFoodIsland();
+      }
+    }
+
+    function showHistory() {
+      history.classList.add('visible');
+    }
+
+    function hideHistory() {
+      history.classList.remove('visible');
+    }
+
+    searchBox.addEventListener('click', () => {
+      input.focus();
+    });
+
+    input.addEventListener('focus', showHistory);
+    input.addEventListener('blur', () => {
+      setTimeout(hideHistory, 150);
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submitSearch(input.value);
+        hideHistory();
+      }
+    });
+
+    history.addEventListener('click', (event) => {
+      const target = event.target.closest('li[data-keyword]');
+      if (!target) return;
+      const keyword = target.dataset.keyword;
+      input.value = keyword;
+      submitSearch(keyword);
+      hideHistory();
+    });
+  </script>  </main> </body></html>

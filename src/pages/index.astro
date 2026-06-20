@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import { projectCards } from '../data/projects.js';
+import GridMotion from '../components/GridMotion.jsx';
+
+const gridItems = [
+  'Item 1',
+  'Item 2',
+  'Item 3',
+  'Item 4',
+  'Item 5',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10',
+  'Item 11',
+  'Item 12',
+  'Item 13',
+  'Item 14',
+  'Item 15',
+  'Item 16',
+  'Item 17',
+  'Item 18',
+  'Item 19',
+  'Item 20',
+  'Item 21',
+  'Item 22',
+  'Item 23',
+  'Item 24',
+  'Item 25',
+  'Item 26',
+  'Item 27',
+  'Item 28',
+];
+---
+<Layout>
+  <section class="hero">
+    <GridMotion client:load gradientColor="#071023" items={gridItems} />
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>Research</h2>
+    <div class="grid">
+      {projectCards.slice(0, 3).map((project) => (
+        <a class="card" href={project.href}>
+          <div>
+            <span>{project.label}</span>
+            <p class="project-card-description">{project.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <h2>Other Projects</h2>
+    <div class="grid">
+      {projectCards.slice(3).map((project) => (
+        <a class="card" href={project.href}>
+          <div>
+            <span>{project.label}</span>
+            <p class="project-card-description">{project.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Please reach me through the following methods:</p>
+    <ul>
+      <li><strong>Phone:</strong> 123-456-7890</li>
+      <li><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/" target="_blank">linkedin.com/in/ainezhang</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/" target="_blank">github.com/ainezhang</a></li>
+      <li><strong>Instagram:</strong> <a href="https://instagram.com/" target="_blank">instagram.com/ainezhang</a></li>
+    </ul>
+  </section>
+</Layout>
