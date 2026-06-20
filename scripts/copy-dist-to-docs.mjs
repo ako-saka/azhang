@@ -1,7 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const root = path.resolve(new URL(import.meta.url).pathname, '..', '..');
+// Use current working directory as project root (script is invoked from project root)
+const root = process.cwd();
 const src = path.join(root, 'dist');
 const dest = path.join(root, 'docs');
 
